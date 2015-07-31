@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 {
 	MPU9250 *mpu0 = new MPU9250(0x00040000, 0);
 	MPU9250 *mpu1 = new MPU9250(0x00050000, 0);
+	mpu0->set_accl_scale(MPU9250A_8g);
+	mpu1->set_accl_scale(MPU9250A_8g);
 
 	double mpu0Xavg = 0;
 	double mpu0Yavg = 0;
@@ -39,14 +41,14 @@ int main(int argc, char *argv[])
 		mpu1Xavg += mpu1Xcurr;
 		mpu1Yavg += mpu1Ycurr;
 		mpu1Zavg += mpu1Zcurr;
-		usleep(10000);
+		usleep(20000);
 	}
-	mpu0Xavg /= SAMPLE_SIZE;
-	mpu0Yavg /= SAMPLE_SIZE;
-	mpu0Zavg /= SAMPLE_SIZE;
-	mpu1Xavg /= SAMPLE_SIZE;
-	mpu1Yavg /= SAMPLE_SIZE;
-	mpu1Zavg /= SAMPLE_SIZE;
+	mpu0Xavg = mpu0Xavg / SAMPLE_SIZE;
+	mpu0Yavg = mpu0Yavg / SAMPLE_SIZE;
+	mpu0Zavg = mpu0Zavg / SAMPLE_SIZE;
+	mpu1Xavg = mpu1Xavg / SAMPLE_SIZE;
+	mpu1Yavg = mpu1Yavg / SAMPLE_SIZE;
+	mpu1Zavg = mpu1Zavg / SAMPLE_SIZE;
 
 	std::cout << "MPU0: " << mpu0Xavg << " " << mpu0Yavg << " " << mpu0Zavg << std::endl;
 	std::cout << "MPU1: " << mpu1Xavg << " " << mpu1Yavg << " " << mpu1Zavg << std::endl;

@@ -18,12 +18,11 @@ ax3 = plt.subplot2grid((2,5), (0,4), rowspan=2, axisbg='blue')
 plt.tight_layout()
 
 data = np.zeros((4,6))
-im = ax1.imshow(data, interpolation='none', aspect='auto', vmin=0, vmax=100, cmap='Blues')
+im = ax1.imshow(data, interpolation='none', aspect='auto', vmin=0, vmax=100, cmap='hot')
 
 ax1.set_xticks(np.arange(data.shape[1]), minor=False)
 ax1.set_yticks(np.arange(data.shape[0]), minor=False)
 
-ax1.invert_yaxis()
 ax1.xaxis.tick_top()
 
 ax1.set_xticklabels(['XF', 'XR', 'YF', 'YR', 'ZF', 'ZR'], minor=False)
@@ -60,8 +59,7 @@ pt = ax3.plot(1, 0, 'ws', ms=0, mfc='w')
 
 def animate(i):
 	line = sys.stdin.readline()
-	line = re.sub(' +', ' ', line)
-	array = line.split(' ')
+	array = line.split(',')
 
 	if len(array) == 24:
 		for i in range(0, 6):

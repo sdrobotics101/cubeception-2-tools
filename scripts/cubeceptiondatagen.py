@@ -19,8 +19,8 @@ while 1:
 		motordata = np.random.randint(0, 100, 24)
 		xyzdata = list(np.random.randint(-180, 180, size=3)) + list(np.random.randint(0, 5, size=2))
 
-	motorline = "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s"
-	xyzline = "%s %s %s %s %s"
+	motorline = " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s"
+	xyzline = " %s, %s, %s, %s, %s"
 	sys.stdout.write(motorline % tuple(motordata))
 	sys.stdout.write("\n")
 	sys.stdout.write(xyzline % tuple(xyzdata))
@@ -40,5 +40,5 @@ while 1:
 	if xyzdata[3] > 5:
 		xyzdata[3] = 0
 
-	time.sleep(0.10)
+	time.sleep(0.01)
 
